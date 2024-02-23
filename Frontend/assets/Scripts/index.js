@@ -1,54 +1,77 @@
-const portfolio = document.querySelector("portfolio")
-const galleryElement = document.querySelector('.gallery');
-// Récupération des projets de l'architecte//
-    let dataApi = fetch("http://localhost:5678/api/works");
+//-------------Récupération des API-------------//
+        const gallery = document.querySelector(".gallery");
+        const portfolio = document.querySelector("portfolio")
+        let works = [];
+        let categories = [];
 
-    dataApi.then (async(responseData)=> {
-    const response = await responseData.json();
-    console.log(response[1]);
-    
-    // Test récupération de l'élèment 1 de la gallerie
-    try{
-        const id = response[1].id;
-        const title = response[1].title;
-        const imageURL = response[1].imageURL;
-    
-        console.log(id);
-        console.log(title);
-        console.log(imageURL)  
-    }
-    
-    catch(err){
-            console.log(err);
-        }
-    });
-    
-        // Récupère les données de l'API
-        fetch('http://localhost:5678/api/works')
-            .then(response => response.json())
-            .then(data => {
-    
-                // Pour chaque projet dans les données, crée une figure avec une image et un titre
-                data.forEach(project => {
-                    const figureElement = document.createElement('figure');
-                    figureElement.classList.add('project');
-    
-                    const imgElement = document.createElement('img');
-    
-                    // Crée les 2 élements dans figure (l'image et le titre)
-                    imgElement.src = project.imageUrl;
-                    imgElement.alt = project.title;
-    
-                    const figcaptionElement = document.createElement('figcaption');
-                    figcaptionElement.textContent = project.title;
-    
-                    // Ajoute l'image et le titre à la figure
-                    figureElement.appendChild(imgElement);
-                    figureElement.appendChild(figcaptionElement);
-    
-                    // Ajoute la figure à la galerie
-                    galleryElement.appendChild(figureElement);
+        function WorksImport() {
+            fetch("http://localhost:5678/api/works")
+                .then((res) => res.json())
+                .then((data) => {
+                    works = data;
+                    generateWorks(works);
+                    displayModal(works);
                 });
-            })
-            .catch(error => console.error('Erreur lors de la récupération des données de l\'API :', error));
-    
+        }
+        WorksImport();
+
+        function categoriesImport() {
+            fetch("http://localhost:5678/api/categories")
+                .then((res) => res.json())
+                .then((data) => {
+                    categories = data;
+                });
+        }
+        categoriesImport();
+
+//----------AFFICHAGE DES CATEGORIES ET PROJETS----------//
+    //--Création de la gallerie de travaux--//
+
+        function generateWorks(worksArray) {
+            gallery.innerHTML = "";
+
+            worksArray.forEach((work) => {
+                //Création des élèments des figures (l'image et le titre de l'image)
+                const figure = document.createElement("figure");
+                gallery.appendChild(figure);
+                figure.classList = work.category.name;
+                figure.setAttribute("data-id", work.id);
+
+                const img = document.createElement("img");
+                img.src = work.imageUrl;
+                img.alt = work.title;
+                figure.appendChild(img);
+
+                const figcaption = document.createElement("figcaption");
+                figcaption.innerHTML = work.title;
+                figure.appendChild(figcaption);
+            });
+        }
+
+    //-- Fonction de filtrage selon les catégories--//
+        const filters = document.querySelectorAll(".filter");
+
+        //Selection de la div concernée pour les filtres
+        function worksFilter() {
+            filters.forEach((filter) => {
+                const filterValue = filter.textContent;
+
+                
+                filter.addEventListener("click", () => {
+                    let filteredWorks = [];
+
+                    //Création du filtre "Tous"
+                    if (filterValue === "Tous") {
+                        filteredWorks = works;
+
+                    //Création des autres filtres
+                    } else {
+                        filteredWorks = works.filter(
+                            (work) => work.category.name === filterValue
+                        );
+                    }
+                    generateWorks(filteredWorks);
+                });
+            });
+        }
+        worksFilter();
