@@ -1,4 +1,5 @@
-//-------------Récupération des API-------------//
+//-------------RECUPERATION DES API-------------//
+
 const gallery = document.querySelector(".gallery");
 const portfolio = document.querySelector("portfolio")
 let works = [];
@@ -25,53 +26,54 @@ function categoriesImport() {
 categoriesImport();
 
 //----------AFFICHAGE DES CATEGORIES ET PROJETS----------//
-//--Création de la gallerie de travaux--//
+    //--Création de la gallerie de travaux--//
 
-function generateWorks(worksArray) {
-    gallery.innerHTML = "";
+    function generateWorks(worksArray) {
+        gallery.innerHTML = "";
 
-    worksArray.forEach((work) => {
-        //Création des élèments des figures (l'image et le titre de l'image)
-        const figure = document.createElement("figure");
-        gallery.appendChild(figure);
-        figure.classList = work.category.name;
-        figure.setAttribute("data-id", work.id);
+        worksArray.forEach((work) => {
 
-        const img = document.createElement("img");
-        img.src = work.imageUrl;
-        img.alt = work.title;
-        figure.appendChild(img);
+                //Création des élèments des figures (l'image et le titre de l'image)
+                const figure = document.createElement("figure");
+                gallery.appendChild(figure);
+                figure.classList = work.category.name;
+                figure.setAttribute("data-id", work.id);
 
-        const figcaption = document.createElement("figcaption");
-        figcaption.innerHTML = work.title;
-        figure.appendChild(figcaption);
-    });
-}
+                const img = document.createElement("img");
+                img.src = work.imageUrl;
+                img.alt = work.title;
+                figure.appendChild(img);
 
-//-- Fonction de filtrage selon les catégories--//
-const filters = document.querySelectorAll(".filter");
+                const figcaption = document.createElement("figcaption");
+                figcaption.innerHTML = work.title;
+                figure.appendChild(figcaption);
+            });
+        }
 
-//Selection de la div concernée pour les filtres
-function worksFilter() {
-    filters.forEach((filter) => {
-        const filterValue = filter.textContent;
+    //-- Fonction de filtrage selon les catégories--//
+    const filters = document.querySelectorAll(".filter");
 
-        
-        filter.addEventListener("click", () => {
-            let filteredWorks = [];
+                //Selection de la div concernée pour les filtres//
+                function worksFilter() {
+                    filters.forEach((filter) => {
+                        const filterValue = filter.textContent;
 
-            //Création du filtre "Tous"
-            if (filterValue === "Tous") {
-                filteredWorks = works;
+                        
+                        filter.addEventListener("click", () => {
+                            let filteredWorks = [];
 
-            //Création des autres filtres
-            } else {
-                filteredWorks = works.filter(
-                    (work) => work.category.name === filterValue
-                );
-            }
-            generateWorks(filteredWorks);
-        });
-    });
-}
-worksFilter();
+                            //Création du filtre "Tous"
+                            if (filterValue === "Tous") {
+                                filteredWorks = works;
+
+                            //Création des autres filtres
+                            } else {
+                                filteredWorks = works.filter(
+                                    (work) => work.category.name === filterValue
+                                );
+                            }
+                            generateWorks(filteredWorks);
+                        });
+                    });
+                }
+                worksFilter();

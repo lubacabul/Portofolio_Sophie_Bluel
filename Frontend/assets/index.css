@@ -89,6 +89,11 @@ h2{
 /*****************************************/
 /**************** HEADER ****************/
 /*****************************************/
+header{
+	display: flex;
+	flex-direction: column-reverse;
+	margin-bottom: 50px
+}
 
 nav ul {
 	display: flex;
@@ -108,6 +113,13 @@ li:hover {
 a {
 	text-decoration: none;
 	color: black;
+}
+
+.header_Perm{
+	display: flex;
+	flex-direction: row;
+	margin-top: 20px;
+	justify-content: space-between;
 }
 
 /*****************************************/
@@ -255,20 +267,14 @@ footer nav ul {
 .blackBanner {
 	align-items: center;
 	background: black;
+	color: white;
 	display: flex;
 	gap: 21px;
 	height: 59px;
 	justify-content: center;
 }
 
-.buttonEdition {
-	cursor: pointer;
-	margin-left: 57px;
-	margin-top: 15px;
-	color: white;
-}
-
-.titremodif{
+.portfolio_Title{
 	display:flex;
 	flex-direction:row;
 	align-items:center;
@@ -276,7 +282,7 @@ footer nav ul {
 	gap: 20px;
 }
 
-.buttonmodif {
+.buttonModify {
 	cursor: pointer;
 	margin-top: -30px;
 	padding-bottom: 20px;
