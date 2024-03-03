@@ -9,7 +9,7 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/login.css">
 
-<script type="module" src="./login.js"></script>
+<script type="module" src="./assets/Scripts/login.js"></script>
 
 </head>
 
@@ -19,7 +19,7 @@
       <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
       <nav>
           <ul>
-            <a href="./index.html#portfolio"><li>Projet</li> </a>
+            <a href="./index.html#portfolio"><li>projet</li> </a>
             <a href="./index.html#contact"><li>contact</li></a>
 			<a href="./login.html"><li>login</li> </a>
 			<a href= "*"><li><img src="./assets/icons/instagram.png" alt="Instagram"></li></a>
@@ -29,24 +29,25 @@
 
 
   <main class="login">
-      <h2>Log In</h2>
+      <h2 class="login-title">Log In</h2>
       
-      <form>
-        <label for="email">E-mail</label>
-        <input id="email" type="email" required="required">
-        <label for="password">Mot de passe</label>
-        <input id="password" type="password" required="required">
-        <input id="connection" type="submit" value="Se connecter">
-    </form>
+      <form class="login-form" id="login-form" action="http://localhost:5678/api/users/login" method="post">
+                <label class="label" for="email">E-mail</label>
+                <input id="email" type="email" required="required">
+                <label class="label" for="password">Mot de passe</label>
+                <input id="password" type="password" required="required">
+        <div id="error"></div>
+                <input id="connection" type="submit" value="Se connecter">
+            </form>
 
-      <a href="*"><p>Mot de passe oublié</p></a>
+      <a class="label link-mdp" href="*"><p>Mot de passe oublié</p></a>
   </main>
 
 
   <footer class="footer_login">
     <nav>
       <ul>
-        <li>Mentions Légales</li>
+        <li >Mentions Légales</li>
       </ul>
     </nav>
   </footer>
