@@ -1,4 +1,4 @@
-//-------------RECUPERATION DES API-------------//
+//-------------RECUPERATION DES APIs-------------//
 
 const gallery = document.querySelector(".gallery");
 const portfolio = document.querySelector("portfolio")
@@ -11,7 +11,6 @@ function WorksImport() {
         .then((data) => {
             works = data;
             generateWorks(works);
-            displayModal(works);
         });
 }
 WorksImport();

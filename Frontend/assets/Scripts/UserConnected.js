@@ -9,13 +9,13 @@ async function checkUserConnected () {
    if (userConnected) {
       
             //Affichage des éléments : barre d'édition, bouton "modifier" et suppression des filtres//
-            const loginLink = document.querySelector(".login__link");
+            const loginLink = document.querySelector(".login-link");
             loginLink.textContent = "logout";
             loginLink.addEventListener("click", userLogOut);
             
             blackBanner()
             
-            const buttonModify = document.querySelector(".buttonModify");
+            const buttonModify = document.querySelector(".button-modify");
             buttonModify.style.display = 'block';
 
             const filtersSection = document.querySelector(".filter-container");
@@ -25,10 +25,10 @@ async function checkUserConnected () {
     } else {
       
             //Suppression des élèments ajoutés pour la fonction admin//
-            const loginLink = document.querySelector(".login__link");
+            const loginLink = document.querySelector(".login-link");
             loginLink.textContent = "login";
 
-            const buttonModify = document.querySelector(".buttonModify");
+            const buttonModify = document.querySelector(".button-modify");
             buttonModify.style.display = 'none';
         }
 }
@@ -40,8 +40,8 @@ function blackBanner() {
     header.appendChild(displayBlackBanner);
     displayBlackBanner.innerHTML = `
     <aside
-      id="blackBanner"
-      class="blackBanner"
+      id="black-banner"
+      class="black-banner"
       aria-hidden="true"
       role="dialog"
       aria-modal="false"

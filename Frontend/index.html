@@ -17,18 +17,40 @@
 	<script src="./assets/Scripts/Script.js"></script>
 	<script src="./assets/Scripts/UserConnected.js"></script>
 	<script type="module" src="./assets/Scripts/index.js"></script>
+	<script type="module" src="./assets/Scripts/modals.js"></script>
 
 
 </head>
 <body>
+
+		<!--Modal 1-->
+		<div class="modal-container">
+
+			<div class="overlay modal-trigger"></div>
+		   
+				<div class="modal" role="dialog" aria-labelledby="modal-title" aria-describedby="dialogDesc">
+						<i class="fa-solid fa-xmark close-modal modal-trigger"></i>
+						<h3 id="modal-title" class="modal-title">Galerie photo</h3>
+						<div class="modal-gallery">
+							<!-- Ajout des icones et de la galerie via JS-->
+						</div>
+						<div class="modal-bar"></div>
+						<button class="btn-ajout">Ajouter une photo</button>
+						<p class="btn-supprimer">Supprimer la galerie</p>
+				</div>
+
+			</div>
+	  
+		</div>
+	  
 	<header>
-		<div class="header_Perm">
+		<div class="header-perm">
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 		<nav>
 			<ul>
 				<a href="#portfolio"><li>projet</li></a>
 				<a href="#contact"><li>contact</li></a>
-				<a href="./login.html" class="login__link"><li>login</li> </a>
+				<a href="./login.html" class="login-link"><li>login</li> </a>
 				<a href= "*"><li><img src="./assets/icons/instagram.png" alt="Instagram"></li></a>
 			</ul>
 		</nav>
@@ -50,9 +72,9 @@
 	</section>
 
 	<section class="portfolio">
-		<div class="portfolio_Title">
+		<div class="portfolio-title">
 			<h2>Mes Projets</h2>
-			<span class="buttonModify"><i class="fa-regular fa-pen-to-square"></i> Modifier</span>
+			<span class="button-modify modal-trigger"><i class="fa-sharp fa-regular fa-pen-to-square"></i>modifier</span>
 		</div>
 		
 		<div class="filter-container">
@@ -61,8 +83,9 @@
 			<button class="filter">Appartements</button>
 			<button class="filter">Hotels & restaurants</button>
 		</div>
-		<div class="gallery">
-		</div>
+			<div class="gallery">
+				<!-- Ajout de la galerie via JS-->
+			</div>
 	</section>
 
 	<section class="contact">
