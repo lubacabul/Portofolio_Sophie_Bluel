@@ -293,6 +293,7 @@ footer nav ul {
 	cursor: pointer;
 	margin-top: -30px;
 	padding-bottom: 20px;
+	display: block;
 }
 
 /*****************************************/
@@ -400,4 +401,22 @@ footer nav ul {
 	font-style: normal;
 	font-weight: 400;
 	font-size: 14px;
+}
+
+.modal-gallery {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-row-gap: 20px;
+	padding: 50px;
+}
+
+.modal-gallery figure{
+	max-height: 102.57px;
+	max-width: 76.86px;
+}
+
+.modal-gallery img{
+		max-height: 102.57px;
+		max-width: 76.86px;
 }

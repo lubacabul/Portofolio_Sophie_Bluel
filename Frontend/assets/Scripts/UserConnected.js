@@ -1,3 +1,16 @@
+window.addEventListener("DOMContentLoaded", (event) => {
+    console.log("Tout est prêt");
+    initWorks();
+  });
+
+// Fonction qui récupère les appels à l'API type "GET" et les initialise //
+async function initWorks() {
+
+     // Utilisateur connecté
+    checkUserConnected();
+
+}
+
 //-------------FONCTION ADMINISTRATION-------------//
 
 async function checkUserConnected () {
@@ -62,5 +75,6 @@ function blackBanner() {
             // Rechargement de la page 
             window.location.reload();
     }
+
 
 
